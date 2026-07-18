@@ -1,0 +1,12 @@
+.direnv
+.forgejo
+.git
+.github
+.envrc
+.envrc.template
+flake.nix
+flake.lock
+.goreleaser.yaml
+.gitattributes
+.gitignore
+CONTRIBUTING.md

@@ -82,7 +82,7 @@ please read [CONTRIBUTING](./CONTRIBUTING.md).
 
 ## maintainers
 
-* [@dumbnoxx](https://github.com/DumbNoxx)
+* @Nxus
 
 ## license
 
