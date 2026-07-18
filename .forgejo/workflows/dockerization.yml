@@ -28,6 +28,7 @@ jobs:
           -t docker.io/nxusdev21/goxe:latest \
           -t docker.io/nxusdev21/goxe:$VERSION \
           -f ./Dockerfile .
+
       - name: Push to Docker.io
         run: |
           VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
