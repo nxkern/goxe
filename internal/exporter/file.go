@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/DumbNoxx/goxe/internal/options"
-	"github.com/DumbNoxx/goxe/pkg/pipelines"
+	"github.com/DumbNoxx/goxe/internal/utils"
 )
 
 // File writes a log report to a file within the user's cache directory.
@@ -47,7 +47,7 @@ import (
 // Note:
 //   - The function only creates the file if it does not already exist; it does not overwrite or append to existing files.
 //   - It does not create the "logs" directory if missing; it assumes the directory was previously created (e.g., by CacheDirGenerate).
-func File(logs []map[string]map[string]*pipelines.LogStats, getConfig options.ConfigProvider) {
+func File(logs []utils.Logs, getConfig options.ConfigProvider) {
 	conf := getConfig()
 	cacheDir, cacheDirErr := os.UserCacheDir()
 	if cacheDirErr != nil {

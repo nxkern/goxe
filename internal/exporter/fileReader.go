@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/DumbNoxx/goxe/internal/utils"
 	"github.com/DumbNoxx/goxe/pkg/pipelines"
 )
 
@@ -30,7 +31,7 @@ import (
 //   - Writes the content to the file with 0600 permissions.
 //   - If the write operation fails, the program terminates with log.Fatal.
 //   - Upon success, prints a console message indicating the path where the file was saved.
-func FileReader(logs map[string]map[string]*pipelines.LogStats, path string) {
+func FileReader(logs utils.Logs, path string) {
 
 	date := time.Now().Format("2006-01-02")
 

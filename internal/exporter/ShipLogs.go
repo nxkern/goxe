@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/DumbNoxx/goxe/internal/options"
+	"github.com/DumbNoxx/goxe/internal/utils"
 	"github.com/DumbNoxx/goxe/pkg/exporter"
-	"github.com/DumbNoxx/goxe/pkg/pipelines"
 )
 
 // ShipLogs sends accumulated logs to a remote server (shipper) using the configured
@@ -37,7 +37,7 @@ import (
 //
 //   - Returns the error if any step (dialing, transforming, or writing) fails;
 //     otherwise, returns nil.
-func ShipLogs(logs map[string]map[string]*pipelines.LogStats, Shipper exporter.Shipper, getConfig options.ConfigProvider) (err error) {
+func ShipLogs(logs utils.Logs, Shipper exporter.Shipper, getConfig options.ConfigProvider) (err error) {
 	conf := getConfig()
 	if conf.ShipperConfig.Address == "" {
 		return nil

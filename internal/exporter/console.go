@@ -3,8 +3,10 @@ package exporter
 import (
 	"fmt"
 
+	"github.com/DumbNoxx/goxe/internal/dashboard"
+	"github.com/DumbNoxx/goxe/internal/utils"
 	"github.com/DumbNoxx/goxe/internal/utils/colors"
-	pipelines "github.com/DumbNoxx/goxe/pkg/pipelines"
+	"github.com/DumbNoxx/goxe/internal/web"
 )
 
 // Console prints a formatted and color-coded log report to the terminal.
@@ -36,8 +38,8 @@ import (
 //     and the timestamps for first and last seen (format: "15:04:05").
 //
 //   - At the end, prints another separator line and calls memoryUsage() to display the current memory footprint.
-func Console(logs map[string]map[string]*pipelines.LogStats, isFinal bool) {
-
+func Console(logs utils.Logs, isFinal bool) {
+	var metrics *dashboard.Metrics = &dashboard.Metrics{}
 	if isFinal {
 		fmt.Println("\tFINAL REPORT")
 	} else {
@@ -64,4 +66,7 @@ func Console(logs map[string]map[string]*pipelines.LogStats, isFinal bool) {
 
 	fmt.Println("----------------------------------")
 	memoryUsage()
+	metrics.SetMetrics(logs)
+	v := web.NewHandler(metrics)
+	v.Hola()
 }
